@@ -1,4 +1,4 @@
-import { Mail, Phone, Building, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, Building, MapPin, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { site } from '../config/site.js';
 import { Stagger, item } from './ui/Reveal.jsx';
@@ -8,6 +8,7 @@ export default function ContactCards() {
     { icon: Building, label: 'Company', value: site.name },
     { icon: Mail, label: 'Email us', value: site.email, href: `mailto:${site.email}` },
     { icon: Phone, label: 'Call us', value: site.phone, href: site.phoneHref },
+    { icon: MapPin, label: 'Visit us', value: site.addressLine, href: site.mapHref, external: true },
   ];
   return (
     <Stagger className="grid gap-4">
@@ -15,7 +16,7 @@ export default function ContactCards() {
         const Tag = c.href ? 'a' : 'div';
         return (
           <motion.div key={c.label} variants={item}>
-            <Tag href={c.href} className={`group flex items-center gap-5 rounded-3xl border border-mist-200 bg-white p-6 shadow-soft transition-all duration-500 ${c.href ? 'hover:-translate-y-1 hover:border-royal-200 hover:shadow-lift' : ''}`}>
+            <Tag href={c.href} {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className={`group flex items-center gap-5 rounded-3xl border border-mist-200 bg-white p-6 shadow-soft transition-all duration-500 ${c.href ? 'hover:-translate-y-1 hover:border-royal-200 hover:shadow-lift' : ''}`}>
               <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-navy-900 text-white transition-colors duration-500 group-hover:bg-royal-600"><c.icon className="h-6 w-6" aria-hidden /></span>
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-medium text-mist-400">{c.label}</p>

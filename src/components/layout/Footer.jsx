@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import Logo from '../ui/Logo.jsx';
 import { site, nav } from '../../config/site.js';
 import { services } from '../../config/services.js';
@@ -25,6 +25,10 @@ export default function Footer() {
               <a href={site.phoneHref} className="group flex items-center gap-3 text-white hover:text-royal-300">
                 <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 ring-1 ring-white/10 group-hover:ring-royal-400/50"><Phone className="h-4 w-4" aria-hidden /></span>
                 {site.phone}
+              </a>
+              <a href={site.mapHref} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-white hover:text-royal-300">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/5 ring-1 ring-white/10 group-hover:ring-royal-400/50"><MapPin className="h-4 w-4" aria-hidden /></span>
+                <address className="not-italic">{site.addressLine}</address>
               </a>
             </div>
           </div>
