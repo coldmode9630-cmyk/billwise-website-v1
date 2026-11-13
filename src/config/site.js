@@ -8,6 +8,7 @@ export const site = {
   phoneHref: 'tel:+15033609994',
   locations: [
     {
+      label: 'Oregon Office Address',
       street: '9710 SW North Dakota St',
       city: 'Tigard',
       region: 'OR',
@@ -17,6 +18,7 @@ export const site = {
       mapHref: 'https://www.google.com/maps/search/?api=1&query=9710+SW+North+Dakota+St%2C+Tigard%2C+OR+97223',
     },
     {
+      label: 'Colorado Office Address',
       street: '1942 Broadway Ste 314C',
       city: 'Boulder',
       region: 'CO',

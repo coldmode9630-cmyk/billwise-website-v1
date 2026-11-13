@@ -29,7 +29,7 @@ export default function Footer() {
               {site.locations.map((loc) => (
                 <a key={loc.line} href={loc.mapHref} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-3 text-white hover:text-royal-300">
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white/5 ring-1 ring-white/10 group-hover:ring-royal-400/50"><MapPin className="h-4 w-4" aria-hidden /></span>
-                  <address className="not-italic">{loc.line}</address>
+                  <span><span className="block text-xs text-mist-400">{loc.label}</span><address className="not-italic">{loc.line}</address></span>
                 </a>
               ))}
             </div>

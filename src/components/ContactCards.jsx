@@ -10,7 +10,7 @@ export default function ContactCards() {
     { icon: Phone, label: 'Call us', value: site.phone, href: site.phoneHref },
     ...site.locations.map((loc) => ({
       icon: MapPin,
-      label: `${loc.city} office`,
+      label: loc.label,
       value: loc.line,
       href: loc.mapHref,
       external: true,
