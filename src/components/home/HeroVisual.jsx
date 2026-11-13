@@ -8,6 +8,7 @@ const steps = [
   { icon: Send, label: 'Submitted to payer', note: 'Tracked from day one' },
   { icon: SearchCheck, label: 'Adjudication', note: 'Status followed up' },
   { icon: CircleDollarSign, label: 'Payment posted', note: 'Reconciled & reported' },
+  { icon: RotateCcw, label: 'Denial reviewed', note: 'Corrected & resubmitted' },
 ];
 
 /** Illustrative "claim journey" composition. Purely visual: no figures or stats. */
@@ -17,7 +18,7 @@ export default function HeroVisual() {
   const yFront = useTransform(scrollY, [0, 600], [0, -30]);
 
   return (
-    <div className="relative mx-auto w-full max-w-[34rem] pb-20 pt-12 sm:px-6" aria-hidden>
+    <div className="relative mx-auto w-full max-w-[34rem] pb-12 pt-12 sm:px-6" aria-hidden>
       {/* glow */}
       <div className="absolute inset-[12%] rounded-full bg-royal-500/30 blur-[90px]" />
 
@@ -71,19 +72,7 @@ export default function HeroVisual() {
         </ol>
       </motion.div>
 
-      {/* floating chips */}
-      <motion.div style={{ y: yFront }} className="absolute -bottom-4 -left-1 z-10 sm:-left-4">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.6, duration: 0.8, ease }} className="animate-float rounded-2xl bg-white p-4 shadow-lift">
-          <div className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-royal-50 text-royal-700"><RotateCcw className="h-5 w-5" /></span>
-            <div>
-              <p className="text-sm font-semibold text-navy-900">Denial reviewed</p>
-              <p className="text-xs text-mist-500">Corrected &amp; resubmitted</p>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
-
+      {/* floating chip */}
       <motion.div style={{ y: yFront }} className="absolute -right-1 -top-3 z-10 sm:-right-2">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.9, duration: 0.8, ease }} className="animate-float rounded-2xl bg-navy-900/90 p-3 shadow-lift ring-1 ring-white/10 backdrop-blur [animation-delay:-3s]">
           <p className="px-1 pb-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-mist-400">Built for</p>
