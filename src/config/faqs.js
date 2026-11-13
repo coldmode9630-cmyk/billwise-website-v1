@@ -22,6 +22,6 @@ export const faqs = [
   },
   {
     q: 'How can I reach your team directly?',
-    a: 'Email info@billwisellc.com or call +1 503-360-9994. You can also submit a request online at any time.',
+    a: 'Email Info@billwisellc.com or call +1 503-360-9994. You can also submit a request online at any time.',
   },
 ];

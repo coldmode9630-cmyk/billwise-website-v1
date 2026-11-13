@@ -41,7 +41,7 @@ beforeEach(() => {
   mockFetch();
 });
 
-test('valid submission is emailed to info@billwisellc.com', async () => {
+test('valid submission is emailed to Info@billwisellc.com', async () => {
   const r = await run(valid());
   assert.equal(r.code, 200);
   assert.equal(r.body.ok, true);
@@ -49,7 +49,7 @@ test('valid submission is emailed to info@billwisellc.com', async () => {
   assert.equal(calls.length, 1);
   assert.equal(calls[0].url, 'https://api.resend.com/emails');
   assert.equal(calls[0].opts.headers.Authorization, 'Bearer re_test');
-  assert.deepEqual(calls[0].body.to, ['info@billwisellc.com']);
+  assert.deepEqual(calls[0].body.to, ['Info@billwisellc.com']);
   assert.equal(calls[0].body.reply_to, 'jane@riverside.example');
   assert.match(calls[0].body.subject, /\[High\] Denials from one payer — Riverside Clinic/);
   assert.match(calls[0].body.html, /Riverside Clinic/);

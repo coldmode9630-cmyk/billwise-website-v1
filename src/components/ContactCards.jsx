@@ -8,7 +8,6 @@ export default function ContactCards() {
     { icon: Building, label: 'Company', value: site.name },
     { icon: Mail, label: 'Email us', value: site.email, href: `mailto:${site.email}` },
     { icon: Phone, label: 'Call us', value: site.phone, href: site.phoneHref },
-    { icon: Phone, label: 'Call us (alternate)', value: site.phone2, href: site.phone2Href },
     ...site.locations.map((loc) => ({
       icon: MapPin,
       label: `${loc.city} office`,

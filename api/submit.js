@@ -69,7 +69,7 @@ export default async function handler(req, res) {
   if (body.website || elapsed < MIN_FILL_MS) return res.status(200).json({ ok: true, id: 'BW-' + Date.now().toString(36).toUpperCase() });
 
   const ip = String(req.headers['x-forwarded-for'] || req.socket?.remoteAddress || 'unknown').split(',')[0].trim();
-  if (rateLimited(ip)) return res.status(429).json({ ok: false, error: 'Too many submissions. Please wait a few minutes, or email info@billwisellc.com.' });
+  if (rateLimited(ip)) return res.status(429).json({ ok: false, error: 'Too many submissions. Please wait a few minutes, or email Info@billwisellc.com.' });
 
   const options = [...serviceTitles, 'Other / Not sure'];
   const { valid, errors, clean } = validateSubmission(body, options);
@@ -87,10 +87,10 @@ export default async function handler(req, res) {
     attachments = [{ filename: `${base}.${ext}`, content: a.content }];
   }
 
-  const { RESEND_API_KEY, CONTACT_TO_EMAIL = 'info@billwisellc.com', CONTACT_FROM_EMAIL } = process.env;
+  const { RESEND_API_KEY, CONTACT_TO_EMAIL = 'Info@billwisellc.com', CONTACT_FROM_EMAIL } = process.env;
   if (!RESEND_API_KEY || !CONTACT_FROM_EMAIL) {
     console.error('[submit] Missing RESEND_API_KEY or CONTACT_FROM_EMAIL environment variable.');
-    return res.status(503).json({ ok: false, error: 'Our form is temporarily unavailable. Please email info@billwisellc.com or call +1 503-360-9994.' });
+    return res.status(503).json({ ok: false, error: 'Our form is temporarily unavailable. Please email Info@billwisellc.com or call +1 503-360-9994.' });
   }
 
   // Idempotency: the same client submission id is only delivered once.
@@ -121,11 +121,11 @@ export default async function handler(req, res) {
     });
     if (!r.ok) {
       console.error('[submit] Resend error', r.status, await r.text().catch(() => ''));
-      return res.status(502).json({ ok: false, error: 'We could not send your request right now. Please try again, or email info@billwisellc.com.' });
+      return res.status(502).json({ ok: false, error: 'We could not send your request right now. Please try again, or email Info@billwisellc.com.' });
     }
   } catch (e) {
     console.error('[submit] Network error', e);
-    return res.status(502).json({ ok: false, error: 'We could not send your request right now. Please try again, or email info@billwisellc.com.' });
+    return res.status(502).json({ ok: false, error: 'We could not send your request right now. Please try again, or email Info@billwisellc.com.' });
   }
 
   if (clientId) {

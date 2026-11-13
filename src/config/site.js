@@ -3,11 +3,9 @@ export const site = {
   name: 'Bill Wise LLC',
   shortName: 'Bill Wise',
   url: 'https://billwisellc.com',
-  email: 'info@billwisellc.com',
+  email: 'Info@billwisellc.com',
   phone: '+1 503-360-9994',
   phoneHref: 'tel:+15033609994',
-  phone2: '+1 503-354-1779',
-  phone2Href: 'tel:+15033541779',
   locations: [
     {
       street: '9710 SW North Dakota St',

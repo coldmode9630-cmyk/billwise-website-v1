@@ -2,7 +2,7 @@
 
 Medical billing services website for **Bill Wise LLC** (https://billwisellc.com).
 Built with **React 18, Vite 5, Tailwind CSS 3, Framer Motion and Lucide icons**. It includes a serverless backend
-(`/api/submit`) that emails every form submission to **info@billwisellc.com** through **Resend**.
+(`/api/submit`) that emails every form submission to **Info@billwisellc.com** through **Resend**.
 
 ---
 
@@ -86,12 +86,12 @@ The form posts to `/api/submit`, which runs on the server. Your API key **never*
    | Name | Value |
    |---|---|
    | `RESEND_API_KEY` | `re_...` (your key) |
-   | `CONTACT_TO_EMAIL` | `info@billwisellc.com` |
+   | `CONTACT_TO_EMAIL` | `Info@billwisellc.com` |
    | `CONTACT_FROM_EMAIL` | `Bill Wise Website <forms@billwisellc.com>` |
 
 5. Redeploy (Vercel → *Deployments* → ⋯ → *Redeploy*) so the variables take effect.
 
-Each submission arrives at info@billwisellc.com as a formatted email. The subject line is like
+Each submission arrives at Info@billwisellc.com as a formatted email. The subject line is like
 `[High] Aging A/R over 90 days — Riverside Clinic`, and **Reply-To is set to the client's email**, so you can just
 hit Reply. Optional attachments (PDF, images, Excel/CSV, Word, up to 3 MB) come through as email attachments.
 
@@ -139,7 +139,7 @@ Then add the environment variables in the Vercel dashboard and redeploy.
 ## 7. Go-live checklist
 
 - [ ] Resend domain verified and the 3 environment variables set in Vercel
-- [ ] Send a real test through `/submit-request` and confirm it arrives at info@billwisellc.com
+- [ ] Send a real test through `/submit-request` and confirm it arrives at Info@billwisellc.com
 - [ ] Reply to the test email and check the reply goes to the sender's address
 - [ ] Review the services list, FAQs and legal pages for accuracy
 - [ ] Domain connected and HTTPS working
@@ -156,7 +156,7 @@ verified and you can substantiate them.
 
 ## 9. Testing performed
 
-- `npm run test:api`: 11 backend tests (delivery to info@billwisellc.com, Reply-To, HTML escaping, validation,
+- `npm run test:api`: 11 backend tests (delivery to Info@billwisellc.com, Reply-To, HTML escaping, validation,
   honeypot/timing spam blocks, rate limiting, duplicate prevention, attachments, provider failure, missing config).
 - Browser tests (Playwright) on desktop, iPhone and iPad: all 7 pages load with correct titles and a single `<h1>`;
   every internal link resolves; no empty or `#` links; mailto/tel links work; navbar, mobile menu, service
