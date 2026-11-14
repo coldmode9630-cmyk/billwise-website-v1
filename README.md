@@ -1,6 +1,6 @@
-# Bill Wise LLC: Website
+# Billwise LLC: Website
 
-Medical billing services website for **Bill Wise LLC** (https://billwisellc.com).
+Medical billing services website for **Billwise LLC** (https://billwisellc.com).
 Built with **React 18, Vite 5, Tailwind CSS 3, Framer Motion and Lucide icons**. It includes a serverless backend
 (`/api/submit`) that emails every form submission to **Info@billwisellc.com** through **Resend**.
 
@@ -87,7 +87,7 @@ The form posts to `/api/submit`, which runs on the server. Your API key **never*
    |---|---|
    | `RESEND_API_KEY` | `re_...` (your key) |
    | `CONTACT_TO_EMAIL` | `Info@billwisellc.com` |
-   | `CONTACT_FROM_EMAIL` | `Bill Wise Website <forms@billwisellc.com>` |
+   | `CONTACT_FROM_EMAIL` | `Billwise Website <forms@billwisellc.com>` |
 
 5. Redeploy (Vercel → *Deployments* → ⋯ → *Redeploy*) so the variables take effect.
 

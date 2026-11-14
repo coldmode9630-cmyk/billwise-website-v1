@@ -13,7 +13,7 @@ const next = [
 ];
 
 export default function SubmitRequest() {
-  useSEO({ title: 'Submit a Request', path: '/submit-request', description: 'Tell Bill Wise LLC about your medical billing requirements or concerns. Our team will review your submission and get back to you.' });
+  useSEO({ title: 'Submit a Request', path: '/submit-request', description: 'Tell Billwise LLC about your medical billing requirements or concerns. Our team will review your submission and get back to you.' });
   return (
     <PageTransition>
       <PageHero eyebrow="Submit a Request" title="How Can We Help You?" accent={['Help']} intro="Tell us about your billing requirements or concerns. Our team will review your submission and get back to you." />

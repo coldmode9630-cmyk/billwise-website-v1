@@ -16,10 +16,10 @@ export default function Intro() {
         <div className="lg:sticky lg:top-32 lg:self-start">
           <SectionHeading
             align="left"
-            eyebrow="Introducing Bill Wise LLC"
+            eyebrow="Introducing Billwise LLC"
             title="Medical billing, handled with care and precision."
             accent={['care', 'precision.']}
-            intro="Bill Wise LLC is a medical billing services company. We help doctors, hospitals and clinics keep claims moving, resolve billing issues, and understand where their revenue stands, so their teams can spend more time on patient care."
+            intro="Billwise LLC is a medical billing services company. We help doctors, hospitals and clinics keep claims moving, resolve billing issues, and understand where their revenue stands, so their teams can spend more time on patient care."
           />
           <Reveal delay={0.25}>
             <Link to="/about" className="group mt-8 inline-flex items-center gap-2 font-semibold text-royal-700">

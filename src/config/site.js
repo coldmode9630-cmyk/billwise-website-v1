@@ -1,7 +1,7 @@
 // Company details used across the site. Edit here, it updates everywhere.
 export const site = {
-  name: 'Bill Wise LLC',
-  shortName: 'Bill Wise',
+  name: 'Billwise LLC',
+  shortName: 'Billwise',
   url: 'https://billwisellc.com',
   email: 'Info@billwisellc.com',
   phone: '+1 503-360-9994',
@@ -30,7 +30,7 @@ export const site = {
   ],
   tagline: 'Smarter Billing. Better Business.',
   description:
-    'Bill Wise LLC provides medical billing services for doctors, hospitals and clinics: claims, coding support, denials, A/R follow-up, payment posting, credentialing and payer enrollment.',
+    'Billwise LLC provides medical billing services for doctors, hospitals and clinics: claims, coding support, denials, A/R follow-up, payment posting, credentialing and payer enrollment.',
 };
 
 export const audiences = ['Doctors & physician practices', 'Hospitals', 'Clinics'];

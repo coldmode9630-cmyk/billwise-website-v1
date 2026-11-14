@@ -1,6 +1,6 @@
 /**
  * POST /api/submit — Vercel serverless function.
- * Validates the inquiry, applies spam checks, and emails it to Bill Wise LLC via Resend.
+ * Validates the inquiry, applies spam checks, and emails it to Billwise LLC via Resend.
  * Secrets come from environment variables only; nothing here reaches the browser.
  */
 import { validateSubmission, validateAttachment, ATTACHMENT } from '../shared/validation.js';
@@ -28,7 +28,7 @@ function buildEmail(d, refId) {
     `<tr><td style="padding:10px 14px;background:#F7F9FC;color:#475370;font:600 13px Arial;width:190px;border-bottom:1px solid #E2E7F0">${k}</td><td style="padding:10px 14px;color:#0A1638;font:14px Arial;border-bottom:1px solid #E2E7F0">${esc(v)}</td></tr>`;
   const urgencyColor = { High: '#C2410C', Medium: '#B45309', Low: '#047857' }[d.urgency];
   const html = `<div style="background:#EFF2F8;padding:24px"><div style="max-width:640px;margin:auto;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #E2E7F0">
-<div style="background:#0A1638;padding:20px 24px;color:#fff;font:700 18px Arial">New Request — Bill Wise LLC Website</div>
+<div style="background:#0A1638;padding:20px 24px;color:#fff;font:700 18px Arial">New Request — Billwise LLC Website</div>
 <div style="padding:20px 24px;font:14px Arial;color:#323C55">Urgency: <b style="color:${urgencyColor}">${esc(d.urgency)}</b> · Reference: <b>${esc(refId)}</b></div>
 <table style="width:100%;border-collapse:collapse">${[
     row('Full name', d.fullName), row('Company / business', d.company), row('Organization type', d.organizationType), row('Email', d.email), row('Phone', d.phone),
@@ -37,7 +37,7 @@ function buildEmail(d, refId) {
 <div style="padding:20px 24px"><div style="font:600 13px Arial;color:#475370;margin-bottom:8px">Detailed description</div>
 <div style="font:14px/1.6 Arial;color:#0A1638;white-space:pre-wrap;background:#F7F9FC;border:1px solid #E2E7F0;border-radius:10px;padding:14px">${esc(d.description)}</div></div>
 <div style="padding:0 24px 20px;font:12px Arial;color:#94A0B8">The sender confirmed this message contains no patient health information (PHI). Reply directly to this email to respond to ${esc(d.fullName)}.</div></div></div>`;
-  const text = `New request from the Bill Wise LLC website (ref ${refId})
+  const text = `New request from the Billwise LLC website (ref ${refId})
 
 Full name: ${d.fullName}
 Company: ${d.company}

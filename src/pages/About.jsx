@@ -27,14 +27,14 @@ const reasons = [
 ];
 
 export default function About() {
-  useSEO({ title: 'About Us', path: '/about', description: 'Learn about Bill Wise LLC: our mission, vision, values and approach to medical billing for doctors, hospitals and clinics.' });
+  useSEO({ title: 'About Us', path: '/about', description: 'Learn about Billwise LLC: our mission, vision, values and approach to medical billing for doctors, hospitals and clinics.' });
   return (
     <PageTransition>
       <PageHero
-        eyebrow="About Bill Wise LLC"
+        eyebrow="About Billwise LLC"
         title="Billing expertise that lets care come first."
         accent={['care']}
-        intro="Bill Wise LLC is a medical billing services company supporting doctors, hospitals and clinics. We take on the detailed, time-consuming work of billing so healthcare teams can focus on their patients."
+        intro="Billwise LLC is a medical billing services company supporting doctors, hospitals and clinics. We take on the detailed, time-consuming work of billing so healthcare teams can focus on their patients."
       />
 
       {/* Introduction */}
@@ -45,7 +45,7 @@ export default function About() {
             <Reveal delay={0.1}>
               <div className="mt-6 space-y-5 text-lg leading-relaxed text-mist-500">
                 <p>Healthcare billing is complex. Payer rules change, claims get rejected for small errors, and unpaid balances age quickly while teams are busy caring for patients.</p>
-                <p>Bill Wise LLC exists to take that weight off your shoulders. We bring structure, persistence and clear communication to the billing process, whether you need full support or help with one specific challenge.</p>
+                <p>Billwise LLC exists to take that weight off your shoulders. We bring structure, persistence and clear communication to the billing process, whether you need full support or help with one specific challenge.</p>
               </div>
             </Reveal>
           </div>

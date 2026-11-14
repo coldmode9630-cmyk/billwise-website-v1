@@ -222,7 +222,7 @@ export default function RequestForm({ compact = false }) {
                   I confirm this submission does <strong>not</strong> contain patient names, medical records or any other protected health information.
                 </Check2>
                 <Check2 name="consent" checked={data.consent} onChange={set('consent')} error={err('consent')}>
-                  I agree that Bill Wise LLC may contact me about this request, as described in the <Link to="/privacy-policy" className="font-semibold text-royal-700 underline underline-offset-4">Privacy Policy</Link>.
+                  I agree that Billwise LLC may contact me about this request, as described in the <Link to="/privacy-policy" className="font-semibold text-royal-700 underline underline-offset-4">Privacy Policy</Link>.
                 </Check2>
               </div>
 
@@ -290,7 +290,7 @@ function Success({ refId, onReset }) {
       </motion.div>
       <h2 className="relative mt-8 text-3xl font-bold">Request received</h2>
       <p className="relative mx-auto mt-4 max-w-lg text-lg leading-relaxed text-mist-500">
-        Thank you for contacting Bill Wise LLC. Your request has been successfully submitted. Our team will review your details and contact you.
+        Thank you for contacting Billwise LLC. Your request has been successfully submitted. Our team will review your details and contact you.
       </p>
       {refId && <p className="relative mt-6 inline-flex rounded-full bg-mist-100 px-4 py-2 font-mono text-sm text-navy-900">Reference: {refId}</p>}
       <div className="relative mt-10 flex flex-col justify-center gap-3 sm:flex-row">

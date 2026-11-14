@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import LogoMark from './LogoMark.jsx';
 
-/** Full Bill Wise LLC logo: mark + "BILL" (brand blue) "WISELLC" (ink). `dark` = for navy backgrounds. */
+/** Full Billwise LLC logo: mark + "BILL" (brand blue) "WISELLC" (ink). `dark` = for navy backgrounds. */
 export default function Logo({ dark = false, className = '', onClick }) {
   return (
-    <Link to="/" onClick={onClick} className={`group inline-flex items-center gap-2.5 ${className}`} aria-label="Bill Wise LLC — home">
+    <Link to="/" onClick={onClick} className={`group inline-flex items-center gap-2.5 ${className}`} aria-label="Billwise LLC — home">
       <LogoMark
         className="h-8 w-auto transition-transform duration-500 group-hover:-translate-x-0.5 sm:h-9"
         ink={dark ? '#FFFFFF' : '#0B0B0F'}

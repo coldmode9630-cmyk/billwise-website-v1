@@ -1,4 +1,4 @@
-// Bill Wise document mark, recreated from the brand logo as SVG.
+// Billwise document mark, recreated from the brand logo as SVG.
 // `ink` = document color, `accent` = folded-corner color, `cut` = speed-line cutouts.
 export default function LogoMark({ className = '', ink = '#0B0B0F', accent = '#0A66D6', cut = '#FFFFFF', title }) {
   return (

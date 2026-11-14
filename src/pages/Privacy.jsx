@@ -4,10 +4,10 @@ import LegalLayout from '../components/layout/LegalLayout.jsx';
 import { site } from '../config/site.js';
 
 export default function Privacy() {
-  useSEO({ title: 'Privacy Policy', path: '/privacy-policy', description: 'How Bill Wise LLC collects, uses and protects information submitted through billwisellc.com.' });
+  useSEO({ title: 'Privacy Policy', path: '/privacy-policy', description: 'How Billwise LLC collects, uses and protects information submitted through billwisellc.com.' });
   return (
     <LegalLayout title="Privacy Policy" accent={['Policy']} intro="How we collect, use and protect the information you share with us through this website." updated="November 12, 2026">
-      <p>This Privacy Policy explains how {site.name} (“Bill Wise,” “we,” “us” or “our”) handles information collected through {site.url.replace('https://', '')} (the “Website”). By using the Website, you agree to the practices described here.</p>
+      <p>This Privacy Policy explains how {site.name} (“Billwise,” “we,” “us” or “our”) handles information collected through {site.url.replace('https://', '')} (the “Website”). By using the Website, you agree to the practices described here.</p>
 
       <h2>1. Information we collect</h2>
       <h3>Information you provide</h3>

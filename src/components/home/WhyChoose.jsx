@@ -17,7 +17,7 @@ export default function WhyChoose() {
     <section className="py-24 sm:py-32">
       <div className="container-x">
         <SectionHeading
-          eyebrow="Why Bill Wise LLC"
+          eyebrow="Why Billwise LLC"
           title="A billing partner you can rely on."
           accent={['rely', 'on.']}
           intro="Medical billing works best when it is accurate, consistent and transparent. That's the standard we hold ourselves to on every account."

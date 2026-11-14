@@ -9,7 +9,7 @@ import Button from '../components/ui/Button.jsx';
 import { site } from '../config/site.js';
 
 export default function Contact() {
-  useSEO({ title: 'Contact Us', path: '/contact', description: `Contact Bill Wise LLC about medical billing services. Email ${site.email} or call ${site.phone}.` });
+  useSEO({ title: 'Contact Us', path: '/contact', description: `Contact Billwise LLC about medical billing services. Email ${site.email} or call ${site.phone}.` });
   return (
     <PageTransition>
       <PageHero eyebrow="Contact Us" title="Let’s talk about your billing." accent={['billing.']} intro="Reach our team directly by email or phone, or send us the details of your billing needs using the form below.">

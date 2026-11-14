@@ -21,7 +21,7 @@ export default function Hero() {
       <div className="container-x grid items-center gap-16 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
         <motion.div style={{ opacity: fade }}>
           <motion.span initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease, delay: 0.2 }} className="eyebrow-dark">
-            <ShieldCheck className="h-3.5 w-3.5" aria-hidden /> Bill Wise LLC · Medical Billing Services
+            <ShieldCheck className="h-3.5 w-3.5" aria-hidden /> Billwise LLC · Medical Billing Services
           </motion.span>
 
           <h1 className="mt-7 text-[2.75rem] font-extrabold leading-[1.02] text-white sm:text-6xl lg:text-[4.6rem]">

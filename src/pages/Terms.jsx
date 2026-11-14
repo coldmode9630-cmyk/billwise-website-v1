@@ -4,10 +4,10 @@ import LegalLayout from '../components/layout/LegalLayout.jsx';
 import { site } from '../config/site.js';
 
 export default function Terms() {
-  useSEO({ title: 'Terms and Conditions', path: '/terms-and-conditions', description: 'Terms and conditions for using the Bill Wise LLC website.' });
+  useSEO({ title: 'Terms and Conditions', path: '/terms-and-conditions', description: 'Terms and conditions for using the Billwise LLC website.' });
   return (
-    <LegalLayout title="Terms and Conditions" accent={['Conditions']} intro="The terms that apply when you use the Bill Wise LLC website." updated="November 12, 2026">
-      <p>These Terms and Conditions (“Terms”) govern your use of {site.url.replace('https://', '')} (the “Website”), operated by {site.name} (“Bill Wise,” “we,” “us” or “our”). By using the Website, you agree to these Terms. If you do not agree, please do not use the Website.</p>
+    <LegalLayout title="Terms and Conditions" accent={['Conditions']} intro="The terms that apply when you use the Billwise LLC website." updated="November 12, 2026">
+      <p>These Terms and Conditions (“Terms”) govern your use of {site.url.replace('https://', '')} (the “Website”), operated by {site.name} (“Billwise,” “we,” “us” or “our”). By using the Website, you agree to these Terms. If you do not agree, please do not use the Website.</p>
 
       <h2>1. Use of the Website</h2>
       <p>You may use the Website for lawful purposes only. You agree not to misuse the Website, including by attempting to gain unauthorized access, interfering with its operation, submitting false or misleading information, or sending spam or malicious content.</p>

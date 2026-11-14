@@ -36,7 +36,7 @@ const valid = (over = {}) => ({
 
 beforeEach(() => {
   process.env.RESEND_API_KEY = 're_test';
-  process.env.CONTACT_FROM_EMAIL = 'Bill Wise Website <forms@billwisellc.com>';
+  process.env.CONTACT_FROM_EMAIL = 'Billwise Website <forms@billwisellc.com>';
   delete process.env.CONTACT_TO_EMAIL;
   mockFetch();
 });
