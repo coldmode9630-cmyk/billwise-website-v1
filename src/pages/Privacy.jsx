@@ -11,12 +11,12 @@ export default function Privacy() {
 
       <h2>1. Information we collect</h2>
       <h3>Information you provide</h3>
-      <p>When you submit a request or contact us, we collect the information you choose to provide, which may include:</p>
+      <p>When you contact us or submit a request, we collect the information you choose to provide, which may include:</p>
       <ul>
-        <li>Your full name, company or organization name and organization type</li>
-        <li>Email address and phone number</li>
-        <li>The type of billing service you are interested in, a subject line and a description of your request</li>
-        <li>Your preferred contact method and the urgency of your request</li>
+        <li>Your full name, organization name, email address and phone number</li>
+        <li>Your preferred contact method, the best time to reach you, and any message you include</li>
+        <li>Details about your organization, such as organization type, specialty, number of providers, approximate claim volume, billing software and main payers</li>
+        <li>The billing service you are interested in, a subject line, a description of your request and its urgency</li>
         <li>Any file you choose to attach</li>
       </ul>
       <h3>Information collected automatically</h3>

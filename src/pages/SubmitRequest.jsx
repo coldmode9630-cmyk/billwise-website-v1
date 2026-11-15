@@ -1,26 +1,26 @@
+import { Link } from 'react-router-dom';
 import { ClipboardCheck, PhoneCall, ShieldCheck } from 'lucide-react';
 import useSEO from '../hooks/useSEO.js';
 import PageTransition from '../components/layout/PageTransition.jsx';
 import PageHero from '../components/layout/PageHero.jsx';
 import RequestForm from '../components/form/RequestForm.jsx';
 import { Reveal } from '../components/ui/Reveal.jsx';
-import { site } from '../config/site.js';
 
 const next = [
-  { icon: ClipboardCheck, t: 'We review your request', d: 'Our team reads every submission and the details you provide.' },
-  { icon: PhoneCall, t: 'We contact you', d: 'We reach out by your preferred method to discuss next steps.' },
-  { icon: ShieldCheck, t: 'We agree a secure process', d: 'If patient data is needed, we set up a secure way to share it.' },
+  { icon: ClipboardCheck, t: 'We review your details', d: 'Our billing team looks at your practice profile and the issue.' },
+  { icon: PhoneCall, t: 'We contact you', d: 'We follow up to discuss scope and next steps.' },
+  { icon: ShieldCheck, t: 'We set up secure sharing', d: 'If patient data is needed, we agree a secure method first.' },
 ];
 
 export default function SubmitRequest() {
-  useSEO({ title: 'Submit a Request', path: '/submit-request', description: 'Tell Billwise LLC about your medical billing requirements or concerns. Our team will review your submission and get back to you.' });
+  useSEO({ title: 'Submit a Request', path: '/submit-request', description: 'Share your practice details and billing needs with Billwise LLC so our team can review them and follow up.' });
   return (
     <PageTransition>
-      <PageHero eyebrow="Submit a Request" title="How Can We Help You?" accent={['Help']} intro="Tell us about your billing requirements or concerns. Our team will review your submission and get back to you." />
-      <section className="relative -mt-10 pb-24 sm:pb-32">
+      <PageHero eyebrow="Submit a Request" title="Tell us about your billing." accent={['billing.']} intro="Share your practice details and the billing issue you need help with, so our team can review it before we follow up." />
+      <section className="relative py-16 sm:py-24">
         <div className="container-x grid gap-10 lg:grid-cols-[1.35fr_0.65fr]">
-          <Reveal y={40}><RequestForm compact /></Reveal>
-          <aside className="space-y-5 lg:pt-14">
+          <Reveal y={40}><RequestForm /></Reveal>
+          <aside className="space-y-5 lg:sticky lg:top-28 lg:self-start">
             <Reveal delay={0.15}>
               <div className="rounded-3xl border border-mist-200 bg-white p-7 shadow-soft">
                 <h2 className="text-lg font-bold">What happens next</h2>
@@ -39,12 +39,9 @@ export default function SubmitRequest() {
               </div>
             </Reveal>
             <Reveal delay={0.25}>
-              <div className="rounded-3xl bg-navy-900 p-7 text-white">
-                <h2 className="text-lg font-bold text-white">Prefer to talk?</h2>
-                <p className="mt-2 text-sm text-mist-300">Reach our team directly.</p>
-                <a href={`mailto:${site.email}`} className="mt-5 block break-words font-semibold text-royal-200 hover:text-white">{site.email}</a>
-                <a href={site.phoneHref} className="mt-2 block font-semibold text-royal-200 hover:text-white">{site.phone}</a>
-              </div>
+              <p className="px-2 text-sm text-mist-500">
+                Just want to talk first? <Link to="/contact" className="font-semibold text-royal-700 underline underline-offset-4">Request a call back</Link>
+              </p>
             </Reveal>
           </aside>
         </div>

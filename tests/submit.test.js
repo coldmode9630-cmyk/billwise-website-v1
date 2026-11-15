@@ -128,3 +128,46 @@ test('GET is not allowed', async () => {
   const r = await run(undefined, { method: 'GET' });
   assert.equal(r.code, 405);
 });
+
+test('billing request email includes the practice profile', async () => {
+  const r = await run(valid({ specialty: 'Cardiology', providerCount: '2–5', claimVolume: '250–1,000', software: 'Athena', payers: 'Medicare, Aetna' }));
+  assert.equal(r.code, 200);
+  assert.match(calls[0].body.text, /Specialty: Cardiology/);
+  assert.match(calls[0].body.text, /Monthly claim volume: 250–1,000/);
+  assert.match(calls[0].body.html, /Practice profile/);
+});
+
+test('billing request requires organization type and rejects unknown ranges', async () => {
+  const r = await run(valid({ organizationType: '', claimVolume: 'a lot' }));
+  assert.equal(r.code, 422);
+  assert.ok(r.body.fields.organizationType);
+  assert.ok(r.body.fields.claimVolume);
+});
+
+const contact = (over = {}) => ({
+  formType: 'contact', fullName: 'Sam Lee', company: '', email: 'sam@clinic.example', phone: '+1 303 555 0100',
+  contactMethod: 'Phone', bestTime: 'Morning', message: '', consent: true, website: '',
+  startedAt: Date.now() - 60_000, submissionId: 'c-' + Math.random(), ...over,
+});
+
+test('contact form only needs brief details and is emailed as a contact', async () => {
+  const r = await run(contact());
+  assert.equal(r.code, 200);
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0].body.subject, '[Contact] Sam Lee');
+  assert.match(calls[0].body.text, /Best time to reach: Morning/);
+  assert.ok(!/Service type/.test(calls[0].body.text));
+});
+
+test('contact form validates name, email, phone and consent', async () => {
+  const r = await run(contact({ fullName: '', email: 'bad', phone: '12', consent: false }));
+  assert.equal(r.code, 422);
+  for (const f of ['fullName', 'email', 'phone', 'consent']) assert.ok(r.body.fields[f], f);
+  assert.equal(calls.length, 0);
+});
+
+test('contact form ignores attachments', async () => {
+  const r = await run(contact({ attachment: { name: 'x.pdf', type: 'application/pdf', content: Buffer.from('%PDF').toString('base64') } }));
+  assert.equal(r.code, 200);
+  assert.equal(calls[0].body.attachments, undefined);
+});

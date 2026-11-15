@@ -1,11 +1,10 @@
-import { Mail, Phone, Building, MapPin, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { site } from '../config/site.js';
 import { Stagger, item } from './ui/Reveal.jsx';
 
 export default function ContactCards() {
   const cards = [
-    { icon: Building, label: 'Company', value: site.name },
     { icon: Mail, label: 'Email us', value: site.email, href: `mailto:${site.email}` },
     { icon: Phone, label: 'Call us', value: site.phone, href: site.phoneHref },
     ...site.locations.map((loc) => ({

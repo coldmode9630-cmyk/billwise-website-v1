@@ -24,7 +24,7 @@ export const site = {
       region: 'CO',
       postalCode: '80302',
       country: 'US',
-      line: '1942 Broadway Ste 314C, Boulder, CO 80302, United States',
+      line: '1942 Broadway Ste 314C, Boulder, CO 80302',
       mapHref: 'https://www.google.com/maps/search/?api=1&query=1942+Broadway+Ste+314C%2C+Boulder%2C+CO+80302',
     },
   ],

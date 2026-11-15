@@ -1,6 +1,10 @@
 /**
- * Validation rules shared by the browser form and the /api/submit function,
+ * Validation rules shared by the browser forms and the /api/submit function,
  * so the server enforces exactly what the user sees.
+ *
+ * Two forms post to /api/submit, told apart by `formType`:
+ *   'contact' – Contact page: brief details so our team can reach the person.
+ *   'request' – Submit a Request page: billing details about the practice and the issue.
  */
 export const LIMITS = {
   fullName: 100,
@@ -10,6 +14,10 @@ export const LIMITS = {
   subject: 150,
   description: 5000,
   descriptionMin: 20,
+  message: 1000,
+  specialty: 100,
+  software: 100,
+  payers: 300,
 };
 
 export const ATTACHMENT = {
@@ -27,24 +35,27 @@ export const ATTACHMENT = {
 };
 export const ATTACHMENT_ACCEPT = '.pdf,.png,.jpg,.jpeg,.csv,.xlsx,.xls,.docx,.doc';
 
+export const FORM_TYPES = ['contact', 'request'];
 export const CONTACT_METHODS = ['Email', 'Phone'];
 export const URGENCY_LEVELS = ['Low', 'Medium', 'High'];
+export const BEST_TIMES = ['Morning', 'Afternoon', 'Anytime'];
 export const ORGANIZATION_TYPES = ['Doctor / physician practice', 'Hospital', 'Clinic', 'Other healthcare organization'];
+export const PROVIDER_COUNTS = ['1', '2–5', '6–20', '21–50', 'More than 50'];
+export const CLAIM_VOLUMES = ['Under 250', '250–1,000', '1,000–5,000', 'More than 5,000', 'Not sure'];
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const PHONE_RE = /^[+()\d\s.-]{7,30}$/;
+const s = (v) => (typeof v === 'string' ? v.trim() : '');
 
-export function validateSubmission(data, serviceOptions = []) {
-  const errors = {};
-  const s = (v) => (typeof v === 'string' ? v.trim() : '');
-
+/** Name, organization, email, phone and preferred contact method: used by both forms. */
+function checkContactDetails(data, errors, { companyRequired }) {
   const fullName = s(data.fullName);
   if (!fullName) errors.fullName = 'Please enter your full name.';
   else if (fullName.length < 2) errors.fullName = 'Name looks too short.';
   else if (fullName.length > LIMITS.fullName) errors.fullName = `Please keep this under ${LIMITS.fullName} characters.`;
 
   const company = s(data.company);
-  if (!company) errors.company = 'Please enter your company or business name.';
+  if (!company && companyRequired) errors.company = 'Please enter your practice, clinic or hospital name.';
   else if (company.length > LIMITS.company) errors.company = `Please keep this under ${LIMITS.company} characters.`;
 
   const email = s(data.email);
@@ -55,6 +66,52 @@ export function validateSubmission(data, serviceOptions = []) {
   const digits = phone.replace(/\D/g, '');
   if (!phone) errors.phone = 'Please enter your phone number.';
   else if (!PHONE_RE.test(phone) || digits.length < 7 || digits.length > 15) errors.phone = 'Please enter a valid phone number.';
+
+  if (!CONTACT_METHODS.includes(data.contactMethod)) errors.contactMethod = 'Please choose a preferred contact method.';
+
+  return { fullName, company, email, phone, contactMethod: data.contactMethod };
+}
+
+function optionalText(data, name, max, errors) {
+  const v = s(data[name]);
+  if (v.length > max) errors[name] = `Please keep this under ${max} characters.`;
+  return v;
+}
+
+function optionalChoice(data, name, options, errors) {
+  const v = s(data[name]);
+  if (v && !options.includes(v)) errors[name] = 'Please choose an option from the list.';
+  return v;
+}
+
+/** Contact page: brief details so we can get in touch. */
+export function validateContact(data) {
+  const errors = {};
+  const contact = checkContactDetails(data, errors, { companyRequired: false });
+  const bestTime = optionalChoice(data, 'bestTime', BEST_TIMES, errors);
+  const message = optionalText(data, 'message', LIMITS.message, errors);
+  if (!data.consent) errors.consent = 'Please confirm you agree to be contacted.';
+
+  return {
+    valid: Object.keys(errors).length === 0,
+    errors,
+    clean: { formType: 'contact', ...contact, company: contact.company || 'Not specified', bestTime: bestTime || 'Anytime', message },
+  };
+}
+
+/** Submit a Request page: billing information about the practice and the issue. */
+export function validateSubmission(data, serviceOptions = []) {
+  const errors = {};
+
+  const organizationType = s(data.organizationType);
+  if (!organizationType) errors.organizationType = 'Please select your organization type.';
+  else if (!ORGANIZATION_TYPES.includes(organizationType)) errors.organizationType = 'Please choose an option from the list.';
+
+  const specialty = optionalText(data, 'specialty', LIMITS.specialty, errors);
+  const providerCount = optionalChoice(data, 'providerCount', PROVIDER_COUNTS, errors);
+  const claimVolume = optionalChoice(data, 'claimVolume', CLAIM_VOLUMES, errors);
+  const software = optionalText(data, 'software', LIMITS.software, errors);
+  const payers = optionalText(data, 'payers', LIMITS.payers, errors);
 
   const serviceType = s(data.serviceType);
   if (!serviceType) errors.serviceType = 'Please select the type of billing service.';
@@ -69,19 +126,31 @@ export function validateSubmission(data, serviceOptions = []) {
   else if (description.length < LIMITS.descriptionMin) errors.description = `Please add a little more detail (at least ${LIMITS.descriptionMin} characters).`;
   else if (description.length > LIMITS.description) errors.description = `Please keep this under ${LIMITS.description} characters.`;
 
-  if (!CONTACT_METHODS.includes(data.contactMethod)) errors.contactMethod = 'Please choose a preferred contact method.';
   if (!URGENCY_LEVELS.includes(data.urgency)) errors.urgency = 'Please choose an urgency level.';
 
-  const organizationType = s(data.organizationType);
-  if (organizationType && !ORGANIZATION_TYPES.includes(organizationType)) errors.organizationType = 'Please choose an option from the list.';
+  const contact = checkContactDetails(data, errors, { companyRequired: true });
 
   if (!data.noPhi) errors.noPhi = 'Please confirm your message contains no patient health information.';
   if (!data.consent) errors.consent = 'Please confirm you agree to be contacted about this request.';
 
+  const orNone = (v) => v || 'Not specified';
   return {
     valid: Object.keys(errors).length === 0,
     errors,
-    clean: { fullName, company, organizationType: organizationType || 'Not specified', email, phone, serviceType, subject, description, contactMethod: data.contactMethod, urgency: data.urgency },
+    clean: {
+      formType: 'request',
+      ...contact,
+      organizationType,
+      specialty: orNone(specialty),
+      providerCount: orNone(providerCount),
+      claimVolume: orNone(claimVolume),
+      software: orNone(software),
+      payers: orNone(payers),
+      serviceType,
+      subject,
+      description,
+      urgency: data.urgency,
+    },
   };
 }
 
