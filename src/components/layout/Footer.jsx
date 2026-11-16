@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUpRight, Instagram, Facebook } from 'lucide-react';
+
+const socialIcons = { Instagram, Facebook };
 import Logo from '../ui/Logo.jsx';
 import { site, nav } from '../../config/site.js';
 import { services } from '../../config/services.js';
@@ -32,6 +34,16 @@ export default function Footer() {
                   <span><span className="block text-xs text-mist-400">{loc.label}</span><address className="not-italic">{loc.line}</address></span>
                 </a>
               ))}
+            </div>
+            <div className="mt-8 flex items-center gap-3">
+              {site.social.map(({ label, href }) => {
+                const Icon = socialIcons[label];
+                return (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={`${site.name} on ${label}`} className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-white ring-1 ring-white/10 transition-colors hover:text-royal-300 hover:ring-royal-400/50">
+                    <Icon className="h-4 w-4" aria-hidden />
+                  </a>
+                );
+              })}
             </div>
           </div>
           <FooterCol title="Company" className="lg:col-span-2" links={[...nav, { label: 'Submit a Request', to: '/submit-request' }]} />

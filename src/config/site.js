@@ -28,6 +28,10 @@ export const site = {
       mapHref: 'https://www.google.com/maps/search/?api=1&query=1942+Broadway+Ste+314C%2C+Boulder%2C+CO+80302',
     },
   ],
+  social: [
+    { label: 'Instagram', href: 'https://www.instagram.com/billwisellc/' },
+    { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61596426577064' },
+  ],
   tagline: 'Smarter Billing. Better Business.',
   description:
     'Billwise LLC provides medical billing services for doctors, hospitals and clinics: claims, coding support, denials, A/R follow-up, payment posting, credentialing and payer enrollment.',
