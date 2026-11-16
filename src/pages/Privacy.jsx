@@ -19,6 +19,8 @@ export default function Privacy() {
         <li>The billing service you are interested in, a subject line, a description of your request and its urgency</li>
         <li>Any file you choose to attach</li>
       </ul>
+      <h3>Note</h3>
+      <p>SMS consent is not shared with third parties.</p>
       <h3>Information collected automatically</h3>
       <p>Like most websites, our hosting provider may automatically record technical information such as your IP address, browser type, device information and pages visited. We use this to operate, secure and improve the Website and to prevent abuse such as spam.</p>
 
