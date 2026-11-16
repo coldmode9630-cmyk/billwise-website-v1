@@ -19,6 +19,8 @@ export default function Privacy() {
         <li>The billing service you are interested in, a subject line, a description of your request and its urgency</li>
         <li>Any file you choose to attach</li>
       </ul>
+      <h3>SMS Terms of Service</h3>
+      <p>By opting into SMS from a web form or other medium, you are agreeing to receive SMS messages from Billwise LLC. This includes SMS messages for conversations (external). Message frequency varies. Message and data rates may apply. See privacy policy at <a href="https://www.billwisellc.com/privacy-policy">https://www.billwisellc.com/privacy-policy</a>. Message HELP for help. Reply STOP to any message to opt out.</p>
       <h3>Note</h3>
       <p>SMS consent is not shared with third parties.</p>
       <h3>Information collected automatically</h3>
