@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, ArrowUpRight, Instagram, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowUpRight, Instagram, Facebook, Linkedin } from 'lucide-react';
 
-const socialIcons = { Instagram, Facebook };
+const socialIcons = { Instagram, Facebook, LinkedIn: Linkedin };
 import Logo from '../ui/Logo.jsx';
 import { site, nav } from '../../config/site.js';
 import { services } from '../../config/services.js';

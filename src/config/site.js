@@ -31,6 +31,7 @@ export const site = {
   social: [
     { label: 'Instagram', href: 'https://www.instagram.com/billwisellc/' },
     { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61596426577064' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/103257357/' },
   ],
   tagline: 'Smarter Billing. Better Business.',
   description:
